@@ -18,9 +18,10 @@ const IncomeForm = () => {
   return (
     <div className="">
 
-      <h2 className="text-4xl text-center font-bold">Enter Income Transaction taka={balance}</h2>
-      <form onSubmit={handleChange} className="form-control w-full max-w-xs text-center mx-auto  bg-red-100
+      <h2 className="text-4xl text-center font-bold m-5">Enter Income Transaction </h2>
+      <form onSubmit={handleChange} className="form-control w-full max-w-xs text-center mx-auto  bg-slate-100
       p-10">
+        <h3 className="text-center font-bold text-xl">You have {balance} taka</h3>
   <label className="label">
     <span className="label-text">Enter your Deposit Amount</span>
    

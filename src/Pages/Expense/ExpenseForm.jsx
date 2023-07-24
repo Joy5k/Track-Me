@@ -1,12 +1,33 @@
+import { useContext } from "react";
+import { AmountContext } from "../AmountProvider/AmountProvider";
 
 const ExpenseForm = () => {
-  return (
-    <div>
+  const { balance, setBalance } = useContext(AmountContext);
+  
+  const handleChange = (e) => {
+    e.preventDefault();
+    console.log(e.target.DepositAmount.value, 'check the event');
+    const depositAmount = parseFloat(e.target.DepositAmount.value) 
+    
+    setBalance(parseFloat(balance) - depositAmount);
+    console.log( balance, 'check the amount');
 
-<h2 className="text-4xl text-center font-bold">Enter Expense Transaction Here</h2>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas, repellendus ullam doloribus molestiae autem ipsam obcaecati pariatur laudantium eos ea eligendi culpa, veniam commodi unde tenetur necessitatibus fugiat consectetur voluptatibus nesciunt quos dolores modi voluptatum, delectus officiis. Itaque similique officia quas sint voluptatibus animi quos laudantium assumenda praesentium nam rem quia labore ratione dicta provident ipsa, optio quaerat error quidem dolores. Iure ab aperiam facere! Porro, esse aspernatur modi rem fugiat aperiam ipsam numquam commodi. Iure, neque obcaecati? Doloremque autem magni cumque quasi sed alias debitis facilis assumenda porro incidunt officiis velit deserunt amet repudiandae, illo temporibus, aliquam unde soluta.</p>
-      {/* Your expense transaction form elements go here */}
-    </div>
+  }
+  return (
+    <div className="">
+
+    <h2 className="text-4xl text-center font-bold m-5">Your Expense Transaction </h2>
+    <form onSubmit={handleChange} className="form-control w-full max-w-xs text-center mx-auto  bg-slate-100
+    p-10">
+      <h3 className="text-center font-bold text-xl">You have {balance} taka</h3>
+<label className="label">
+  <span className="label-text">Enter your Withdraw Amount</span>
+ 
+</label>
+<input type="text" name="DepositAmount" placeholder="100" className="input input-bordered w-full max-w-xs" />
+  <button className="btn btn-primary my-1">Deposit</button>
+</form>
+  </div>
   );
 };
 
