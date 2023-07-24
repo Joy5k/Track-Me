@@ -1,11 +1,33 @@
+import { useContext } from "react";
+import { AmountContext } from "../AmountProvider/AmountProvider";
 
 const IncomeForm = () => {
-  return (
-    <div>
+  const { balance, setBalance } = useContext(AmountContext);
+  
+  const handleChange = (e) => {
+    e.preventDefault();
+    console.log(e.target.DepositAmount.value, 'check the event');
+    const depositAmount = parseFloat(e.target.DepositAmount.value) 
+    
+    setBalance(parseFloat(balance) + depositAmount);
+    console.log( balance, 'check the amount');
 
-      <h2>Enter Income Transaction</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facilis dolor doloribus obcaecati enim blanditiis ut nemo nesciunt dolores nostrum accusamus? Natus, ea a ad dolorem ratione assumenda commodi! Mollitia fuga quo voluptatum eos temporibus aliquid, distinctio, delectus corporis vero cum quod dolores voluptatem adipisci tempora doloremque eveniet autem hic. A corporis, voluptatum nemo cumque debitis, odit hic iusto animi impedit aperiam facilis eos nihil culpa consequatur suscipit quas quo aliquid autem repudiandae ut enim quam? Est provident quam nisi veniam autem sequi esse nulla. Aspernatur possimus architecto placeat molestias atque temporibus consectetur inventore! Dolorem dignissimos consequuntur neque, consequatur vero facere.</p>
-      {/* Your income transaction form elements go here */}
+  }
+
+  
+  return (
+    <div className="">
+
+      <h2 className="text-4xl text-center font-bold">Enter Income Transaction taka={balance}</h2>
+      <form onSubmit={handleChange} className="form-control w-full max-w-xs text-center mx-auto  bg-red-100
+      p-10">
+  <label className="label">
+    <span className="label-text">Enter your Deposit Amount</span>
+   
+  </label>
+  <input type="text" name="DepositAmount" placeholder="100" className="input input-bordered w-full max-w-xs" />
+    <button className="btn btn-primary my-1">Deposit</button>
+</form>
     </div>
   );
 };

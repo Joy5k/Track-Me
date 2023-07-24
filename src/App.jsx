@@ -1,12 +1,14 @@
 import { RouterProvider } from 'react-router-dom';
 import { router } from './Routes/Routes';
-
+import { AmountProvider } from './Pages/AmountProvider/AmountProvider';
 
 const App = () => {
   return (
     <div>
-            <RouterProvider router={router}></RouterProvider>
+      <AmountProvider>
 
+            <RouterProvider router={router}></RouterProvider>
+      </AmountProvider>
  </div>
   );
 };
